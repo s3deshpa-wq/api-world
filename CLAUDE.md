@@ -20,8 +20,8 @@ python agentCall.py             # or api.py, taskManager.py, ex12.py, etc.
 ```
 
 - Auth: scripts call `load_dotenv()` then `anthropic.Anthropic()`, which reads `ANTHROPIC_API_KEY` from `venv/.env`.
-- There is no `requirements.txt`/`pyproject.toml` — the venv itself is the dependency record (`anthropic`, `python-dotenv`, `pydantic`).
-- No test suite or linter exists anywhere in this repo.
+- There is no `requirements.txt`/`pyproject.toml` — the venv itself is the dependency record (`anthropic`, `python-dotenv`, `pydantic`, `httpx`, `pytest`).
+- `pytest` is installed (the repo's only test dependency) with one test file, `venv/test_tool_agent.py`, covering `tool_agent.py`'s `get_time`. Run with `pytest -v test_tool_agent.py` from inside `venv/`. No other script has test coverage, and no linter exists anywhere in this repo.
 - `todo.py`'s to-do CLI is documented separately below; it does not depend on the venv/API scripts.
 
 ## Architecture of the API scripts (`venv/*.py`)
@@ -43,7 +43,7 @@ Progression across files, roughly simplest to most complete:
 - `agentCall.py` — generalizes the loop into an `Agent` class; tools may be sync or async and are awaited via `asyncio.gather` for parallel tool calls.
 - `agent_traced.py` — same `Agent` pattern as `agentCall.py` but instrumented with verbose step-by-step printing of `history` mutations (`show_history`/`describe_block`); useful as a reference for how `history` evolves turn by turn.
 - `taskManager.py` — the most complete example: Pydantic `Task`/`AddTaskArgs` models, task state persisted to `venv/data.json`, logging to `venv/taskManager.log`, and a `TaskManager` class wired to real task-management tools (`add_task`, `list_tasks`, `complete_tasks`, `get_task_count`).
-- `tool_agent.py` — a materially different pattern from the rest: instead of the hand-written tool-call loop + hand-written schema, it uses the SDK's `client.beta.messages.tool_runner(...)`, which drives the call/run-tool/feed-result loop for you. Tools are plain functions decorated with `@beta_tool`, and their schemas are generated from the function signature and docstring rather than written by hand.
+- `tool_agent.py` — a materially different pattern from the rest: instead of the hand-written tool-call loop + hand-written schema, it uses the SDK's `client.beta.messages.tool_runner(...)`, which drives the call/run-tool/feed-result loop for you. Tools are plain functions decorated with `@beta_tool`, and their schemas are generated from the function signature and docstring rather than written by hand. Its `get_time` tool resolves any city worldwide via the free Open-Meteo geocoding API (`httpx`, used directly here rather than only as a transitive `anthropic` SDK dependency) — unlike `agentCall.py`/`agent_traced.py`, whose `get_time` stubs still return fake fixed data for any city.
 - `ex17.py` — Files API example (`client.beta.files.upload`, `betas=["files-api-2025-04-14"]`) that uploads PDFs and asks the model to summarize them. Not portable as-is: the file paths are hardcoded absolute paths outside the repo.
 - `ex18.py` — prompt-templating demo: fills one prompt template with several tone/length/audience variable combinations and compares the resulting summaries.
 - `ex19.py` — structured-output demo: prompts the model to return JSON matching a Pydantic `Invoice` model's shape, for extraction/validation use cases.
