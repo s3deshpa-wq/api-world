@@ -1,0 +1,24 @@
+{
+  "title": "Society website launch - weekly sync",
+  "host": "Priya",
+  "participants": ["Priya", "Rahul", "Anita", "Vikram"],
+  "segments": [
+    {"speaker": "Priya", "start_seconds": 0, "language": "en", "text": "Good morning everyone, let's get started. Agenda for today is the website launch date, the payment gateway, and the vendor budget."},
+    {"speaker": "Rahul", "start_seconds": 14, "language": "hi-en", "text": "Haan, website ka design almost ready hai. Bas mobile view mein thoda kaam baaki hai, I think one more week lagega."},
+    {"speaker": "Anita", "start_seconds": 31, "language": "en", "text": "If design needs one more week, can we still launch on the 15th?"},
+    {"speaker": "Rahul", "start_seconds": 38, "language": "hi", "text": "पंद्रह तारीख थोड़ा मुश्किल है। अगर हम बीस तारीख रखें तो testing के लिए भी समय मिल जाएगा।"},
+    {"speaker": "Priya", "start_seconds": 52, "language": "hi-en", "text": "Theek hai, let's finalize the 20th as the launch date. Sab agree karte hain?"},
+    {"speaker": "Vikram", "start_seconds": 58, "language": "en", "text": "Yes, 20th works for me."},
+    {"speaker": "Anita", "start_seconds": 61, "language": "en", "text": "Agreed."},
+    {"speaker": "Priya", "start_seconds": 66, "language": "en", "text": "Next, payment gateway. Vikram, any update?"},
+    {"speaker": "Vikram", "start_seconds": 70, "language": "hi-en", "text": "Maine Razorpay aur PayU dono se baat ki. Razorpay ka fee 2 percent hai, PayU ka 1.9 percent, but Razorpay ka integration hamare developer ko pehle se aata hai."},
+    {"speaker": "Anita", "start_seconds": 92, "language": "en", "text": "The difference is small. I would prefer Razorpay because it will save development time."},
+    {"speaker": "Priya", "start_seconds": 101, "language": "hi", "text": "ठीक है, Razorpay फाइनल करते हैं। विक्रम, तुम शुक्रवार तक उनसे agreement sign करवा लो।"},
+    {"speaker": "Vikram", "start_seconds": 112, "language": "en", "text": "Sure, I will get it signed by Friday."},
+    {"speaker": "Priya", "start_seconds": 118, "language": "en", "text": "Last item, vendor budget. The quote we got is 3.5 lakh rupees."},
+    {"speaker": "Anita", "start_seconds": 125, "language": "hi-en", "text": "Yeh thoda zyada lag raha hai. Kya hum ek aur quote le sakte hain before deciding?"},
+    {"speaker": "Priya", "start_seconds": 133, "language": "hi-en", "text": "Good point. Anita, tum next week tak do aur quotes le aao, phir hum decide karenge."},
+    {"speaker": "Rahul", "start_seconds": 141, "language": "en", "text": "Also, who is writing the content for the About Us page? Nobody has picked it up yet."},
+    {"speaker": "Priya", "start_seconds": 148, "language": "hi-en", "text": "Achha, us par next meeting mein baat karte hain. Thank you everyone, meeting khatam karte hain."}
+  ]
+}

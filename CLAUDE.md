@@ -51,6 +51,10 @@ Progression across files, roughly simplest to most complete:
 
 All of the chat/agent loop scripts run an interactive `input()` loop and exit on typing `quit`.
 
+## `meeting_app/` (repo root)
+
+Prototype of a Zoom-like meeting app's control plane plus a Claude-powered Hindi/English meeting note taker. `meetings.py` (stdlib only: create/join/leave/end, 50-participant cap, no duration limit, transcript + end-of-meeting hooks), `note_taker.py` (rolling live notes per transcript chunk and a final `MeetingNotes` summary via `client.beta.messages.parse` with Pydantic models), `demo.py` (replays `sample_transcript.json`; needs an API key). `meeting_app/README.md` is the design doc. Offline tests: `pytest -v tests/test_meeting_app.py` from the repo root.
+
 ## `todo.py` (repo root)
 
 Standalone CLI to-do app, stdlib only (`json`, `sys`, `pathlib`):
